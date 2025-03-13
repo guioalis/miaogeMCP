@@ -6,21 +6,23 @@
 Docker Compose堆栈部署
 容器日志检索
 容器列表和状态监控
+
 安装
+
 前提条件
 Python 3.8+
 Docker
 Docker Compose
 安装步骤
+
 克隆仓库
 
-bash
 git clone https://github.com/guioalis/miaogeMCP.git
 cd miaogeMCP
 安装依赖
 
-bash
 pip install -r requirements.txt
+
 配置环境变量
 
 创建一个.env文件并设置必要的环境变量：
@@ -28,12 +30,14 @@ pip install -r requirements.txt
 plaintext
 API_KEY=your_claude_api_key
 SECRET_KEY=your_secret_key
+
 使用方法
+
 启动服务
-Code
-```bash
+
 python app.py
-```
+
+
 服务将在http://localhost:5000上运行。
 
 API端点
@@ -50,10 +54,12 @@ POST /api/compose/up - 部署Compose堆栈
 POST /api/compose/down - 停止Compose堆栈
 GET /api/compose/status - 获取Compose堆栈状态
 与Claude AI集成
+
 本服务集成了Claude AI，可以通过自然语言处理来执行Docker操作。例如：
 
 "创建一个运行Nginx的容器"
 "显示所有正在运行的容器"
 "部署我的Web应用堆栈"
+
 许可证
 MIT
