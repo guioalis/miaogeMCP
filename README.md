@@ -13,12 +13,15 @@ Docker Compose堆栈部署
 Python 3.8+
 Docker
 Docker Compose
+
 安装步骤
 
 克隆仓库
 
 git clone https://github.com/guioalis/miaogeMCP.git
+
 cd miaogeMCP
+
 安装依赖
 
 pip install -r requirements.txt
@@ -41,6 +44,7 @@ python app.py
 服务将在http://localhost:5000上运行。
 
 API端点
+
 容器管理
 POST /api/containers/create - 创建新容器
 GET /api/containers - 列出所有容器
