@@ -22,7 +22,7 @@
 1. 克隆仓库
 
 ```bash
-git clone https://github.com/guioalis/miaogeMCP.git
+git clone https://github.com/yourusername/miaoge-docker-mcp.git
 cd miaoge-docker-mcp
 ```
 
