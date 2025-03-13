@@ -23,7 +23,7 @@
 
 ```bash
 git clone https://github.com/guioalis/miaogeMCP.git
-cd miaoge-docker-mcp
+cd miaogeMCP
 ```
 
 2. 安装依赖
