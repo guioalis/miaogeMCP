@@ -2,6 +2,7 @@ import requests
 import json
 import os
 from dotenv import load_dotenv
+from mcp_client import MCPClient
 
 # 加载环境变量
 load_dotenv()
@@ -111,23 +112,26 @@ def chat_with_claude_async(prompt, model=None, max_tokens=1000, temperature=0.7)
 
 # 示例用法
 if __name__ == "__main__":
+    # 创建MCP客户端实例
+    client = MCPClient()
+    
     # 登录获取令牌
-    if not login():
+    if not client.login():
         exit(1)
     
     # 获取Claude AI配置
-    config = get_claude_config()
+    config = client.get_claude_config()
     
     # 检查API是否可用
     if config and config["api_status"] == "available":
         # 基本聊天示例
         print("\n=== 基本聊天示例 ===")
-        chat_with_claude("如何使用Docker部署一个简单的Web应用？")
+        client.chat_with_claude("如何使用Docker部署一个简单的Web应用？")
         
         # 指定模型示例
         if "claude-3-haiku-20240307" in config["available_models"]:
             print("\n=== 指定模型示例 ===")
-            chat_with_claude(
+            client.chat_with_claude(
                 "简要介绍Docker Compose的基本用法", 
                 model="claude-3-haiku-20240307",
                 max_tokens=500,
@@ -136,6 +140,6 @@ if __name__ == "__main__":
         
         # 异步聊天示例
         print("\n=== 异步聊天示例 ===")
-        chat_with_claude_async("列出5个常用的Docker命令及其用途")
+        client.chat_with_claude_async("列出5个常用的Docker命令及其用途")
     else:
         print("Claude API不可用，请检查API密钥配置")

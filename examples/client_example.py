@@ -2,6 +2,7 @@ import requests
 import json
 import os
 from dotenv import load_dotenv
+from mcp_client import MCPClient
 
 # 加载环境变量
 load_dotenv()
@@ -242,21 +243,24 @@ def chat_with_claude_async(prompt, model=None, max_tokens=1000, temperature=0.7)
 
 # 示例用法
 if __name__ == "__main__":
+    # 创建MCP客户端实例
+    client = MCPClient()
+    
     # 登录获取令牌
-    if not login():
+    if not client.login():
         exit(1)
     
     # 获取Claude AI配置
-    get_claude_config()
+    client.get_claude_config()
     
     # 与Claude AI聊天
-    chat_with_claude("如何使用Docker部署一个简单的Web应用？")
+    client.chat_with_claude("如何使用Docker部署一个简单的Web应用？")
     
     # 获取所有容器
-    containers = get_containers()
+    containers = client.get_containers()
     
     # 创建一个Nginx容器示例
-    # container = create_container(
+    # container = client.create_container(
     #     image="nginx:latest",
     #     name="mcp-nginx-example",
     #     ports={"80/tcp": "8080"}
@@ -264,13 +268,13 @@ if __name__ == "__main__":
     # 
     # if container:
     #     # 启动容器
-    #     start_container(container['id'])
+    #     client.start_container(container['id'])
     #     
     #     # 停止容器
-    #     stop_container(container['id'])
+    #     client.stop_container(container['id'])
     #     
     #     # 删除容器
-    #     delete_container(container['id'])
+    #     client.delete_container(container['id'])
     
     # Compose示例
     # compose_content = """
@@ -287,10 +291,10 @@ if __name__ == "__main__":
     # """
     # 
     # # 部署Compose堆栈
-    # deploy_compose(compose_content)
+    # client.deploy_compose(compose_content)
     # 
     # # 获取Compose堆栈状态
-    # get_compose_status(compose_content)
+    # client.get_compose_status(compose_content)
     # 
     # # 停止Compose堆栈
-    # stop_compose(compose_content)
+    # client.stop_compose(compose_content)
